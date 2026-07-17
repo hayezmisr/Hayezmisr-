@@ -125,6 +125,14 @@ test.style.padding="10px";
 test.innerHTML="أنا ظاهر";
 
 document.body.appendChild(test);
+  L.tileLayer(
+'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png',
+{
+attribution:'&copy; OpenStreetMap &copy; CARTO',
+subdomains:'abcd',
+maxZoom:20
+}
+).addTo(map);
 </script>
 
 </body>

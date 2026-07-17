@@ -111,8 +111,20 @@ L.marker([lat,lng])
 .addTo(map)
 .bindPopup("الموقع المحدد")
 .openPopup();
+test.style.top=
+} 
+  var test=document.createElement("div");
 
-}
+test.style.position="absolute";
+test.style.top="10px";
+test.style.right="10px";
+test.style.zIndex="9999";
+test.style.background="white";
+test.style.padding="10px";
+
+test.innerHTML="أنا ظاهر";
+
+document.body.appendChild(test);
 </script>
 
 </body>

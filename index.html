@@ -50,7 +50,69 @@ fillOpacity:0.2
 }).addTo(map);
 
 });
+// ===== البحث بالإحداثيات =====
 
+var coordBox=L.control({position:'topright'});
+
+coordBox.onAdd=function(){
+
+var div=L.DomUtil.create('div');
+
+div.style.background="white";
+div.style.padding="8px";
+div.style.borderRadius="6px";
+div.style.boxShadow="0 0 6px gray";
+
+div.innerHTML=`
+<input id="coords"
+placeholder="26.564321,31.703245"
+style="width:200px;padding:6px;"><br><br>
+
+<button onclick="searchCoord()"
+style="width:100%;padding:6px;background:green;color:white;border:none;">
+بحث بالإحداثيات
+</button>
+`;
+
+return div;
+
+};
+
+coordBox.addTo(map);
+
+function searchCoord(){
+
+var txt=document.getElementById("coords").value.trim();
+
+var arr=txt.split(",");
+
+if(arr.length!=2){
+
+alert("اكتب الإحداثيات بهذا الشكل:\n26.564321,31.703245");
+
+return;
+
+}
+
+var lat=parseFloat(arr[0]);
+var lng=parseFloat(arr[1]);
+
+if(isNaN(lat)||isNaN(lng)){
+
+alert("الإحداثيات غير صحيحة");
+
+return;
+
+}
+
+map.setView([lat,lng],18);
+
+L.marker([lat,lng])
+.addTo(map)
+.bindPopup("الموقع المحدد")
+.openPopup();
+
+}
 </script>
 
 </body>
